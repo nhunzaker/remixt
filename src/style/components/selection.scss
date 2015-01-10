@@ -1,0 +1,31 @@
+.ars-selection {
+  border: 1px solid #dfdfdf;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  min-height: 48px;
+  min-width: 240px;
+}
+
+.ars-selection-photo {
+  display: block;
+}
+
+.ars-selection-caption {
+  background: rgba(#fff, 0.875);
+  border-radius: 3px;
+  bottom: 0;
+  display: block;
+  left: 0;
+  line-height: 16px;
+  padding: 16px;
+  position: absolute;
+  right: 0;
+  width: 100%;
+}
+
+.ars-selection-photo + .ars-selection-caption {
+  border-radius: 0;
+}
