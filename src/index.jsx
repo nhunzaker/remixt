@@ -4,9 +4,9 @@
  * on thereactway.io
  */
 
-import "style/application;
+import "style/application";
 
 import App   from "components/app";
-import React from "react"";
+import React from "react";
 
 React.render(<App />, document.getElementById("app"));
