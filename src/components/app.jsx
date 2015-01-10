@@ -4,9 +4,7 @@
  * on thereactway.io
  */
 
-import React from 'react'
-
-import 'style/application'
+import React from 'react';
 
 let App = React.createClass({
 
@@ -16,9 +14,9 @@ let App = React.createClass({
         <h1>Success!</h1>
         <p>The application launched</p>
       </div>
-    )
+    );
   }
 
-})
+});
 
-React.render(<App />, document.getElementById('app'))
+export default App;
