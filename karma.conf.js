@@ -11,16 +11,27 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      'src/**/__tests__/*.js*': [ 'webpack' ]
+      'src/**/__tests__/*.jsx*': [ 'webpack' ]
     },
 
-    reporters: [ 'mocha' ],
+    reporters: [ 'coverage', 'mocha' ],
 
     webpack: {
       devtool : 'inline-source-map',
+      output  : webpack_config.output,
       plugins : webpack_config.plugins,
       resolve : webpack_config.resolve,
-      module  : webpack_config.module
+      module  : {
+        preLoaders  : webpack_config.module.preLoaders,
+        loaders     : webpack_config.module.loaders,
+        postLoaders : [
+          {
+            test: /\.jsx*$/,
+            exclude: /(__tests__|node_modules)\//,
+            loader: 'istanbul-instrumenter'
+          }
+        ]
+      },
     },
 
     webpackMiddleware: {

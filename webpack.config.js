@@ -3,7 +3,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
   debug   : true,
-  devtool : 'source-map',
+  devtool : 'inline-source-map',
 
   entry: {
     'application' : './src/index.jsx'
@@ -12,7 +12,8 @@ module.exports = {
   output: {
     filename: 'assets/js/[name].js',
     path: '.',
-    publicPath: '/'
+    publicPath: '/',
+    devtoolModuleFilenameTemplate: '[resource-path]'
   },
 
   resolve: {
@@ -28,6 +29,13 @@ module.exports = {
   ],
 
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx*$/,
+        exclude : /node_modules/,
+        loader: "source-map-loader"
+      }
+    ],
     loaders: [
       {
         test    : /\.s*(c|a)ss$/,
