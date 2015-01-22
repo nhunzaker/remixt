@@ -4,17 +4,38 @@
  * on thereactway.io
  */
 
-import React from 'react';
+import Effect     from './effect'
+import Monitor    from 'mixins/monitor'
+import React      from 'react'
+import Sound      from 'stores/sound'
+import Visualizer from './visualizer'
 
 let App = React.createClass({
+
+  mixins: [ Monitor ],
+
+  getState() {
+    return {
+      sounds: Sound.all()
+    }
+  },
+
+  addSound(sound, i) {
+    return <Effect key={ i } sound={ sound } />
+  },
 
   render() {
     return (
       <div>
-        <h1>Success!</h1>
-        <p>The application launched</p>
+        <Visualizer />
+        { this.state.sounds.map(this.addSound) }
+        <button onClick={ this._onClick }>Add sound</button>
       </div>
     );
+  },
+
+  _onClick() {
+    Sound.add('sound')
   }
 
 });
